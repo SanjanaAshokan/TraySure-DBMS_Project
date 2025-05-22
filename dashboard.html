@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="icon" type="image/png" href="assets/icons/icon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dashboard-page">
+  <!-- Background Overlay Wrapper -->
+  <div class="dashboard-overlay">
+    <!-- Hero Section with Logo and Title -->
+  <div class="hero">
+    <div class="text-center">
+      <img src="assets/icons/icon.png" alt="TraySure Icon" style="position: absolute ;left:20px;top:20px;width: 80px; height: auto; ">
+      <h1 style="display: inline-block; vertical-align: middle;">TraySure</h1>
+      <p>Where every Ingredient is a Treasure</p>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="assets/icons/icon.png" alt="TraySure Icon" width="30" height="30" class="d-inline-block align-text-top">
+          TraySure
+        </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="dashboard.html">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="add_ingredient.php">Add Ingredients</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="usage.php">Daily Usage</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="summary.php">Monthly Summary</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="donate.php">Surplus Donations</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="backend/logout.php">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Dashboard Content -->
+   <div class="overlay container mt-5">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h2>Welcome to TraySure, <span id="username">User</span>!</h2>
+          <p>Monitor your ingredients, track food waste, and optimize your restaurant operations.</p>
+        </div>
+      </div>
+
+        <div class="row mt-4">
+            <!-- Card for Ingredient Tracking -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Ingredient Tracking">
+                    <div class="card-body">
+                        <h5 class="card-title">Ingredient Tracking</h5>
+                        <p class="card-text">Track your ingredients, usage, expiry, and losses.</p>
+                        <a href="ingredient_tracking.php" class="btn btn-primary">Go to Ingredient Tracking</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card for Food Waste -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Food Waste">
+                    <div class="card-body">
+                        <h5 class="card-title">Food Waste</h5>
+                        <p class="card-text">Monitor food waste and calculate monetary losses.</p>
+                        <a href="food_waste.php" class="btn btn-primary">Go to Food Waste</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card for Surplus Food Donations -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Surplus Food Donations">
+                    <div class="card-body">
+                        <h5 class="card-title">Surplus Food Donations</h5>
+                        <p class="card-text">Donate surplus food to charitable organizations.</p>
+                        <a href="surplus_food_donations.html" class="btn btn-primary">Go to Surplus Donations</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

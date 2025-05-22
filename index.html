@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TraySure</title>
+  <link rel="icon" type="image/png" href="assets/icons/icon.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="index-page">
+  <!-- Hero Section with Logo and Title -->
+  <div class="hero">
+    <div class="text-center">
+      <img src="assets/icons/icon.png" alt="TraySure Icon" style="position: absolute ;left:20px;top:20px;width: 80px; height: auto; ">
+      <h1 style="display: inline-block; vertical-align: middle;">TraySure</h1>
+      <p>Where every Ingredient is a Treasure</p>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">
+        <img src="assets/icons/icon.png" alt="TraySure Icon" width="30" height="30" class="d-inline-block align-text-top">
+        TraySure
+      </a>
+      
+    </div>
+  </nav>
+
+  <!-- Background Image + Login Form -->
+  <div class="image-holder">
+    <img class="background" src="assets/hero.jpg" alt="TraySure Hero Image">
+    <div class="form-overlay">
+      <form id="login-form" action="backend/login.php" method="post">
+        <h3 class="text-center">Restaurant Login</h3>
+        <label for="restaurant_id">Restaurant ID</label>
+        <input type="text" id="restaurant_id" name="restaurant_id" required>
+
+        <label for="restaurant_name">Restaurant Name</label>
+        <input type="text" id="restaurant_name" name="restaurant_name" required>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+        <input type="submit" value="Login" class="btn btn-primary w-100 mt-3">
+
+        <!-- ✅ Sign Up link -->
+        <p class="text-center mt-3">
+          New here? <a href="signup.html">Sign Up</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- About Us Section -->
+  <section class="container my-5">
+    <h2 class="text-center">About Us</h2>
+    <p class="text-center">
+      TraySure is a smart restaurant management system designed to reduce food wastage,
+      track ingredient usage, and encourage food donation. Our mission is to make every ingredient count,
+      transforming surplus into opportunity for a better, sustainable future.
+    </p>
+  </section>
+  <div id="social-media-container" background-color="#00000">
+    <div id="facebook-icon-container">
+      <img src="D:\Web creation\Website_1\images\icons\facebook-icon.png" width="50px">
+    </div>
+    <div id="twitter-icon-container">
+      <img src="D:\Web creation\Website_1\images\icons\twitter-icon.png" width="50px">
+    </div>
+    <div id="instagram-icon-container">
+      <img src="D:\Web creation\Website_1\images\icons\instagram-icon.png"width="50px">
+    </div>
+
+  </div>
+  <br>
+
+  <div class="form-container">
+    <div class="form-head-container">
+      <img id="email-icon" src="D:\Web creation\Website_1\images\email-icon.png">
+      <p id="contact-us-label">Contact Us</p>
+    </div>
+
+    <form action="action_page.php">
+      <label class="form-item" for="fname">First Name</label>
+      <input type="text" name="fname" placeholder="Your name">
+      <br><br>
+
+      <label class="form-item" for="lname">Last Name</label>
+      <input type="text" name="lname" placeholder="Your last name">
+      <br><br>
+
+      <label class="form-item" for="subject">Subject</label>
+      <textarea id="subject" name="subject" placeholder="How can we help?"></textarea>
+      <br><br>
+      <input type="submit" id="submit-btn" value="Submit">
+
+    </form>
+  </div>
+</body>
+</html>
