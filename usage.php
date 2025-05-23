@@ -18,7 +18,7 @@ $dropdown_sql = "
     FROM ingredients i
     LEFT JOIN daily_usage d ON i.ingredient_id = d.ingredient_id AND d.restaurant_id = ?
     LEFT JOIN food_waste f ON i.ingredient_id = f.ingredient_id AND f.restaurant_id = ?
-    WHERE i.restaurant_id = ?
+    WHERE i.restaurant_id = ? AND i.expiry_date >= CURDATE()
     GROUP BY i.ingredient_id
     HAVING (i.initial_quantity - used - wasted) > 0
 ";

@@ -51,10 +51,6 @@ if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
         <label class="form-label">Expiry Date</label>
         <input type="date" class="form-control" name="expiry_date" required>
       </div>
-      <div class='container mt-4'>";
-        <h3 class='text-center mb-4'>Monthly Ingredient Summary for $month/$year</h3>";
-      </div>";
-
       <button type="submit" class="btn btn-primary">Add Ingredient</button>
     </form>
   </div>

@@ -15,7 +15,7 @@
       <p>Join TraySure - Every Ingredient Counts!</p>
     </div>
 
-    <form action="backend/signup.php" method="POST">
+    <form id="signupForm" method="POST" action="backend/signup.php">
       <div class="mb-3">
         <label for="restaurant_id" class="form-label">Restaurant ID</label>
         <input type="text" class="form-control" name="restaurant_id" id="restaurant_id" required>
@@ -33,6 +33,8 @@
 
       <!-- Hidden field to store location -->
       <input type="hidden" name="location" id="location">
+      <input type="hidden" name="latitude" id="latitude">
+      <input type="hidden" name="longitude" id="longitude">
 
       <button type="submit" class="btn btn-primary w-100">Sign Up</button>
       <p class="text-center mt-3">
@@ -43,29 +45,54 @@
 
   <!-- Auto-location detection script -->
   <script>
-    window.onload = function() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          const lat = position.coords.latitude;
-          const lon = position.coords.longitude;
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("signupForm");
+    const locationInput = document.getElementById("location");
+    const latInput = document.getElementById("latitude");
+    const lonInput = document.getElementById("longitude");
 
-          fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
-            .then(response => response.json())
-            .then(data => {
-              const location = data.address.city || data.address.town || data.address.village || data.address.state || "Unknown";
-              document.getElementById("location").value = location;
-            })
-            .catch(() => {
-              document.getElementById("location").value = "Unknown";
-            });
-        }, function() {
-          document.getElementById("location").value = "Unknown";
-        });
-      } else {
-        document.getElementById("location").value = "Unknown";
+    form.addEventListener("submit", function (e) {
+      // Prevent submission until geolocation is populated
+      if (!latInput.value || !lonInput.value || latInput.value === "0" || lonInput.value === "0") {
+        e.preventDefault(); // Stop form from submitting
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function (position) {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+
+            latInput.value = lat;
+            lonInput.value = lon;
+
+            // Get readable location name
+            fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
+              .then(response => response.json())
+              .then(data => {
+                locationInput.value = data.address.city || data.address.town || data.address.village || data.address.state || "Unknown";
+
+                // Now resubmit the form after setting values
+                form.submit();
+              })
+              .catch(() => {
+                locationInput.value = "Unknown";
+                form.submit(); // Submit even if reverse geocoding fails
+              });
+          }, function () {
+            locationInput.value = "Unknown";
+            latInput.value = "0";
+            lonInput.value = "0";
+            form.submit();
+          });
+        } else {
+          locationInput.value = "Unknown";
+          latInput.value = "0";
+          lonInput.value = "0";
+          form.submit();
+        }
       }
-    };
-  </script>
+    });
+  });
+</script>
+
 
 </body>
 </html>

@@ -6,6 +6,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $restaurant_name = $_POST['restaurant_name'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $location = isset($_POST['location']) ? $_POST['location'] : 'Unknown';
+    $latitude = isset($_POST['latitude']) ? floatval($_POST['latitude']) : 0;
+    $longitude = isset($_POST['longitude']) ? floatval($_POST['longitude']) : 0;
 
     // Check for duplicate restaurant_id
     $checkStmt = $conn->prepare("SELECT * FROM users WHERE restaurant_id = ?");
@@ -19,9 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 
-    // Insert new account with location
-    $stmt = $conn->prepare("INSERT INTO users (restaurant_id, restaurant_name, password, location) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("ssss", $restaurant_id, $restaurant_name, $password, $location);
+    // Insert with lat/lng
+    $stmt = $conn->prepare("INSERT INTO users (restaurant_id, restaurant_name, password, location, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssdd", $restaurant_id, $restaurant_name, $password, $location, $latitude, $longitude);
 
     if ($stmt->execute()) {
         echo "<script>alert('Signed up successfully! You can now login.');
